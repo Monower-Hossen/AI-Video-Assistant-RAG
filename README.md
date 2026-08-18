@@ -86,7 +86,7 @@ AI-Video-Assistant-RAG/
 
 **Windows (PowerShell):**
 ```powershell
-git clone <your-repo-url>
+git clone https://github.com/Monower-Hossen/AI-Video-Assistant-RAG
 cd AI-Video-Assistant-RAG
 python -m venv venv
 venv\Scripts\activate
@@ -94,7 +94,7 @@ venv\Scripts\activate
 
 **macOS / Linux:**
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/Monower-Hossen/AI-Video-Assistant-RAG
 cd AI-Video-Assistant-RAG
 python3 -m venv venv
 source venv/bin/activate
