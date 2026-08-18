@@ -1,17 +1,25 @@
 # 🎬 AI Video Assistant with RAG
 
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.10+-blue.svg" alt="Python 3.10+">
+  <img src="https://img.shields.io/badge/LangChain-LCEL-purple.svg" alt="LangChain">
+  <img src="https://img.shields.io/badge/LLM-Groq-orange.svg" alt="Groq">
+  <img src="https://img.shields.io/badge/UI-Streamlit-red.svg" alt="Streamlit">
+  <img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License: MIT">
+</p>
+
 Turn any YouTube video or local video/audio file into an intelligent meeting assistant. This tool transcribes, summarizes, extracts key information, and allows you to chat with your media content. It's an end-to-end **Retrieval-Augmented Generation (RAG)** application designed for meeting analysis.
 
 ## Description
 
-This project provides a complete pipeline for processing video or audio inputs. It uses **`yt-dlp`** to handle YouTube URLs and **`pydub`** for local files. The audio is transcribed using a local instance of **OpenAI Whisper**, with support for English, Bangla, and Hinglish. The resulting transcript is then processed by **Mistral AI** via LangChain to generate a title, a concise summary, and extract action items, key decisions, and open questions.
+This project provides a complete pipeline for processing video or audio inputs. It uses **`yt-dlp`** to handle YouTube URLs and **`pydub`** for local files. The audio is transcribed using a local instance of **OpenAI Whisper**, with support for English, Bangla, and Hinglish. The resulting transcript is then processed by an LLM (defaulting to **Groq**) via LangChain to generate a title, a concise summary, and extract action items, key decisions, and open questions.
 
 Finally, it builds a RAG chain, allowing you to "chat" with the meeting transcript to ask specific questions. The application can be run as a command-line tool (`main.py`) or as a web UI using Streamlit (`app.py`).
 
 ## Features
 
 - 🎥 **Flexible input** — YouTube URL, or upload MP4/MKV/AVI/MOV/MP3/WAV/M4A
-- 🗣️ **Multi-language Transcription** — Local Whisper for English, Hinglish, Bangla, and Banglish.
+- 🗣️ **Multi-language Transcription** — Local Whisper for English, Hinglish, and Bangla.
 - 📝 **Automated Summarization** — Generates a title and a summary of the transcript.
 - 🎯 **Information Extraction** — Pulls out action items, key decisions, and open questions.
 - 💬 **Conversational RAG** — Chat with the transcript to find specific information.
@@ -46,9 +54,9 @@ Interactive Chat / Final Output
 | Layer | Technology |
 |---|---|
 | UI | Streamlit |
-| Video/Audio | yt-dlp, pydub, FFmpeg |
+| Video/Audio | `yt-dlp`, `pydub`, FFmpeg |
 | Speech-to-Text | OpenAI Whisper (local) |
-| RAG & LLM | LangChain, Mistral AI |
+| RAG & LLM | LangChain, Groq (default) |
 | Embeddings | HuggingFace `sentence-transformers` |
 | Vector DB | ChromaDB |
 | Translation | deep-translator |
@@ -61,7 +69,7 @@ AI-Video-Assistant-RAG/
 │
 ├── app.py                      # Streamlit web UI
 ├── main.py                     # CLI entry point
-├── pipeline.py                 # Main processing orchestrator
+├── pipeline.py                 # Main processing pipeline
 ├── requirements.txt
 ├── .env.example                # Copy to .env and fill in your key
 ├── README.md
@@ -77,7 +85,7 @@ AI-Video-Assistant-RAG/
 ├── utils/
 │   └── audio_processor.py      # Downloads and chunks audio
 │
-└── downloades/                 # Cached audio files (gitignored)
+└── downloads/                  # Cached audio files (gitignored)
 ```
 
 ## Installation
